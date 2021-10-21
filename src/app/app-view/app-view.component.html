@@ -3,7 +3,13 @@
     <h4 class="tui-island__title">{{todo.title}}</h4>
     <p class="tui-island__paragraph tui-space_bottom-1">{{todo.description}}</p>
     <p>
-      <tui-tag [value]="todo.priority"></tui-tag>
+      <tui-tag
+        [value]="todo.priority"
+        [class.low]="todo.priority === 'Low'"
+        [class.medium]="todo.priority === 'Medium'"
+        [class.high]="todo.priority === 'High'"
+        status="custom"
+      ></tui-tag>
     </p>
     <p class="tui-island__paragraph">{{todo.dueDate}}</p>
   </tui-island>
