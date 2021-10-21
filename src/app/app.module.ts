@@ -12,10 +12,13 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
+import { AppViewComponent } from './app-view/app-view.component';
+import { TuiIslandModule } from "@taiga-ui/kit";
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    AppViewComponent
   ],
   imports: [
     BrowserModule,
@@ -24,7 +27,8 @@ import { AppComponent } from './app.component';
     TuiDialogModule,
     TuiNotificationsModule,
     TuiGroupModule,
-    TuiButtonModule
+    TuiButtonModule,
+    TuiIslandModule,
   ],
   providers: [{provide: TUI_SANITIZER, useClass: NgDompurifySanitizer}],
   bootstrap: [AppComponent]
