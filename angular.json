@@ -39,7 +39,12 @@
               "node_modules/@taiga-ui/core/styles/taiga-ui-global.less",
               "node_modules/@taiga-ui/core/styles/taiga-ui-theme.less"
             ],
-            "scripts": []
+            "scripts": [],
+            "optimization": {
+              "styles": {
+                "inlineCritical": false
+              }
+            }
           },
           "configurations": {
             "production": {
