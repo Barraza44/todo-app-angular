@@ -2,7 +2,7 @@ import { Component, OnInit, ChangeDetectionStrategy, Inject, TemplateRef } from 
 import { TuiDialogContext, TuiDialogService } from "@taiga-ui/core";
 import { POLYMORPHEUS_CONTEXT } from "@tinkoff/ng-polymorpheus"
 import {ToDo} from "../../ToDo";
-import {isEmpty} from "rxjs/operators";
+import {FormControl, FormGroup} from "@angular/forms";
 
 @Component({
   selector: 'app-new-todo',
@@ -10,12 +10,15 @@ import {isEmpty} from "rxjs/operators";
   styleUrls: ['./new-todo.component.css']
 })
 export class NewTodoComponent implements OnInit {
-  title: string = "";
-  description: string = "";
-  priority: string = "";
-  dueDate: string = "";
+  todoControl = new FormGroup(
+    {
+      titleControl: new FormControl("Title!"),
+      descriptionControl: new FormControl("Type your description"),
+      priorityControl: new FormControl(),
+      dateControl: new FormControl()
+    }
+  )
 
-  isEmpty: boolean = this.title === "" || this.description === "" || this.priority === "" || this.dueDate === "";
   priorityValues: string[] = ["Low", "Medium", "High"];
 
 
@@ -28,10 +31,22 @@ export class NewTodoComponent implements OnInit {
   }
 
   submit() {
+    let todoTitle = this.todoControl.get("titleControl")?.value;
+    let todoDescription = this.todoControl.get("descriptionControl")?.value;
+    let todoPriority = this.todoControl.get("priorityControl")?.value;
+    let todoDueDate = this.todoControl.get("dateControl")?.value;
+
+    const isEmpty = todoTitle === null || todoDescription === null || todoPriority === null || todoDueDate === null
+
     if (!isEmpty) {
-      let todo = new ToDo(this.title, this.description, this.priority, this.dueDate);
+      let todo = new ToDo(todoTitle, todoDescription, todoPriority, todoDueDate);
       this.context.completeWith(todo);
     }
+  }
+
+  cancel() {
+    // @ts-ignore
+    this.context.completeWith(undefined)
   }
 
 }

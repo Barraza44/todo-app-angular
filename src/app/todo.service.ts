@@ -49,4 +49,8 @@ export class TodoService {
   getTodos(): ToDo[] {
     return this.todos;
   }
+
+  addTodo(todo: ToDo) {
+    this.todos.push(todo);
+  }
 }

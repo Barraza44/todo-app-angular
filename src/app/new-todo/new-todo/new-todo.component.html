@@ -1,25 +1,46 @@
-<tui-input [(ngModel)]="title" tuiTextfieldSize="m">Title</tui-input>
-<tui-text-area [tuiTextfieldMaxLength]="300" [(ngModel)]="description"></tui-text-area>
-<tui-select
-  tuiTextfieldSize="m"
-  [tuiTextfieldLabelOutside]="true"
-  [(ngModel)]="priority"
->
-  Pick a priority
-  <tui-data-list-wrapper *tuiDataList [items]="priorityValues"></tui-data-list-wrapper>
-</tui-select>
-<tui-input-date
-  tuiUnfinishedValidator="Finish filling the field"
-  [(ngModel)]="dueDate"
->
-  Pick a date
-</tui-input-date>
-<button
-  tuiButton
-  type="button"
-  size="m"
-  [disabled]="isEmpty"
-  (click)="submit()"
->
-  Submit
-</button>
+<form [formGroup]="todoControl">
+  <div class="tui-form__row">
+    <tui-input formControlName="titleControl" tuiTextfieldSize="m">Title</tui-input>
+  </div>
+  <div class="tui-form__row">
+    <tui-text-area [tuiTextfieldMaxLength]="300" formControlName="descriptionControl"></tui-text-area>
+  </div>
+  <div class="tui-form__row">
+    <tui-select
+      tuiTextfieldSize="m"
+      [tuiTextfieldLabelOutside]="true"
+      formControlName="priorityControl"
+    >
+      Pick a priority
+      <tui-data-list-wrapper *tuiDataList [items]="priorityValues"></tui-data-list-wrapper>
+    </tui-select>
+  </div>
+  <div class="tui-form__row">
+    <tui-input-date
+      tuiUnfinishedValidator="Finish filling the field"
+      formControlName="dateControl"
+    >
+      Pick a date
+    </tui-input-date>
+  </div>
+  <div class="tui-form__buttons">
+    <button
+      tuiButton
+      type="button"
+      class="tui-form__button"
+      size="m"
+      (click)="submit()"
+    >
+      Submit
+    </button>
+    <button
+      tuiButton
+      appearance="flat"
+      class="tui-form__button"
+      size="m"
+      (click)="cancel()"
+    >
+      Cancel
+    </button>
+  </div>
+</form>

@@ -9,7 +9,7 @@ import {
   TuiTextAreaModule, TuiUnfinishedValidatorModule
 } from "@taiga-ui/kit";
 import {TuiButtonModule, TuiDataListModule, TuiTextfieldControllerModule} from "@taiga-ui/core";
-import {FormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 
 
 
@@ -29,6 +29,7 @@ import {FormsModule} from "@angular/forms";
     TuiTextAreaModule,
     TuiInputDateModule,
     TuiUnfinishedValidatorModule,
+    ReactiveFormsModule,
   ],
   exports : [
     NewTodoComponent
