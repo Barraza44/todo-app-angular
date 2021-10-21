@@ -1,6 +1,15 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NewTodoComponent } from './new-todo/new-todo.component';
+import {
+  TuiDataListWrapperModule,
+  TuiInputDateModule,
+  TuiInputModule,
+  TuiSelectModule,
+  TuiTextAreaModule, TuiUnfinishedValidatorModule
+} from "@taiga-ui/kit";
+import {TuiButtonModule, TuiDataListModule, TuiTextfieldControllerModule} from "@taiga-ui/core";
+import {FormsModule} from "@angular/forms";
 
 
 
@@ -9,7 +18,17 @@ import { NewTodoComponent } from './new-todo/new-todo.component';
     NewTodoComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    FormsModule,
+    TuiButtonModule,
+    TuiSelectModule,
+    TuiInputModule,
+    TuiTextfieldControllerModule,
+    TuiDataListModule,
+    TuiDataListWrapperModule,
+    TuiTextAreaModule,
+    TuiInputDateModule,
+    TuiUnfinishedValidatorModule,
   ],
   exports : [
     NewTodoComponent
