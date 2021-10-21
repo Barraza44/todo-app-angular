@@ -6,7 +6,7 @@ import {
   TuiNotificationsModule,
   TUI_SANITIZER,
   TuiGroupModule,
-  TuiButtonModule
+  TuiButtonModule, TuiTooltipModule, TuiHintModule
 } from "@taiga-ui/core";
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -14,11 +14,13 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { AppViewComponent } from './app-view/app-view.component';
 import { TuiIslandModule } from "@taiga-ui/kit";
+import { NavigationComponent } from './navigation/navigation.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    AppViewComponent
+    AppViewComponent,
+    NavigationComponent
   ],
   imports: [
     BrowserModule,
@@ -29,6 +31,8 @@ import { TuiIslandModule } from "@taiga-ui/kit";
     TuiGroupModule,
     TuiButtonModule,
     TuiIslandModule,
+    TuiTooltipModule,
+    TuiHintModule
   ],
   providers: [{provide: TUI_SANITIZER, useClass: NgDompurifySanitizer}],
   bootstrap: [AppComponent]
