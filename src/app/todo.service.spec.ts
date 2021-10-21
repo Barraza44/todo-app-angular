@@ -14,7 +14,11 @@ describe('TodoServiceService', () => {
     expect(service).toBeTruthy();
   });
 
-  it('should return a Todos array ',() => {
+  it("should have a todos cache", () => {
+    expect(typeof service.todos).toBe("object");
+  })
+
+  it('getTodos should return a Todos array ',() => {
     let todos = service.getTodos();
     expect(typeof todos).toBe('object');
   });

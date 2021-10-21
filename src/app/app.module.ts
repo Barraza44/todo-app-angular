@@ -13,14 +13,16 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
 import { AppViewComponent } from './app-view/app-view.component';
-import { TuiIslandModule } from "@taiga-ui/kit";
+import {TuiIslandModule, TuiTagModule} from "@taiga-ui/kit";
 import { NavigationComponent } from './navigation/navigation.component';
+import {NewTodoModule} from "./new-todo/new-todo.module";
+
 
 @NgModule({
   declarations: [
     AppComponent,
     AppViewComponent,
-    NavigationComponent
+    NavigationComponent,
   ],
   imports: [
     BrowserModule,
@@ -32,7 +34,9 @@ import { NavigationComponent } from './navigation/navigation.component';
     TuiButtonModule,
     TuiIslandModule,
     TuiTooltipModule,
-    TuiHintModule
+    TuiHintModule,
+    TuiTagModule,
+    NewTodoModule
   ],
   providers: [{provide: TUI_SANITIZER, useClass: NgDompurifySanitizer}],
   bootstrap: [AppComponent]
