@@ -6,7 +6,7 @@ import {
   TuiNotificationsModule,
   TUI_SANITIZER,
   TuiGroupModule,
-  TuiButtonModule, TuiTooltipModule, TuiHintModule
+  TuiButtonModule, TuiTooltipModule, TuiHintModule, TuiHostedDropdownModule, TuiDataListModule
 } from "@taiga-ui/core";
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -16,6 +16,8 @@ import { AppViewComponent } from './app-view/app-view.component';
 import {TuiIslandModule, TuiTagModule} from "@taiga-ui/kit";
 import { NavigationComponent } from './navigation/navigation.component';
 import {NewTodoModule} from "./new-todo/new-todo.module";
+import { TodoMenuComponent } from './todo-menu/todo-menu.component';
+import {TuiActiveZoneModule} from "@taiga-ui/cdk";
 
 
 @NgModule({
@@ -23,6 +25,7 @@ import {NewTodoModule} from "./new-todo/new-todo.module";
     AppComponent,
     AppViewComponent,
     NavigationComponent,
+    TodoMenuComponent,
   ],
   imports: [
     BrowserModule,
@@ -36,7 +39,10 @@ import {NewTodoModule} from "./new-todo/new-todo.module";
     TuiTooltipModule,
     TuiHintModule,
     TuiTagModule,
-    NewTodoModule
+    NewTodoModule,
+    TuiHostedDropdownModule,
+    TuiDataListModule,
+    TuiActiveZoneModule
   ],
   providers: [{provide: TUI_SANITIZER, useClass: NgDompurifySanitizer}],
   bootstrap: [AppComponent]
