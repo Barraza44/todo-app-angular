@@ -37,6 +37,7 @@ export class TodoService {
     let filtered = this.todos.filter(todo => todo.id !== ToDo.id)
     this.todos = filtered;
     this.saveToDos();
+    this.notifyService.onTodoDelete(ToDo.id);
     return filtered
   }
 

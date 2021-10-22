@@ -17,5 +17,12 @@ export class NotifyService {
     }).subscribe()
   }
 
-  //TODO add notifications for loading and deleting
+  onTodoDelete(id: number) {
+    this.tuiNotificationsService
+      .show(`ToDo with id ${id} successfully deleted`, {
+        label: "ToDo deleted",
+        status: TuiNotification.Success,
+        autoClose: true
+      }).subscribe()
+  }
 }
