@@ -33,6 +33,13 @@ export class TodoService {
     this.saveToDos();
   }
 
+  deleteTodo(ToDo: ToDo) {
+    let filtered = this.todos.filter(todo => todo.id !== ToDo.id)
+    this.todos = filtered;
+    this.saveToDos();
+    return filtered
+  }
+
   //Loads ToDos from local storage
   loadToDos() {
     let todos = this.storageService.getItem("todos");

@@ -21,4 +21,14 @@ export class AppViewComponent implements OnInit {
     this.todos = this.todoService.getTodos();
   }
 
+  getTodoById(id: number) {
+    return this.todoService.getTodoById(id);
+  }
+
+  deleteTodo(id: number) {
+    let deleted = this.getTodoById(id)
+    if (!deleted) return;
+    this.todos = this.todoService.deleteTodo(deleted)
+  }
+
 }
