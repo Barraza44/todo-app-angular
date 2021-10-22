@@ -1,0 +1,26 @@
+<tui-hosted-dropdown #dropdown [content]="content" [(open)]="isDropdownOpen" >
+  <button
+    tuiIconButton
+    type="button"
+    icon="tuiIconMoreVer"
+    appearance="flat"
+    size="s"
+    [pseudoHovered]="dropdown.open || null"
+  ></button>
+</tui-hosted-dropdown>
+<ng-template #content let-activeZone>
+  <tui-data-list
+    tuiDataListDropdownManager
+    [tuiActiveZoneParent]="activeZone"
+  >
+    <button
+      tuiOption
+      (click)="onClickEdit()"
+    >Edit</button>
+    <button
+      tuiOption
+      (click)="onClickDelete()"
+    >Delete</button>
+  </tui-data-list>
+
+</ng-template>
