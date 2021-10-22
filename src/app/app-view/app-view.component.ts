@@ -25,10 +25,9 @@ export class AppViewComponent implements OnInit {
     return this.todoService.getTodoById(id);
   }
 
-  deleteTodo(id: number) {
-    let deleted = this.getTodoById(id)
-    if (!deleted) return;
-    this.todos = this.todoService.deleteTodo(deleted)
+  deleteTodo = (todo: ToDo): void => {
+    if (!todo) return;
+    this.todos = this.todoService.deleteTodo(todo)
   }
 
 }

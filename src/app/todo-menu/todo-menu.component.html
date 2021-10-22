@@ -19,8 +19,28 @@
     >Edit</button>
     <button
       tuiOption
-      (click)="onClickDelete()"
+      (click)="showDeleteDialog(template)"
     >Delete</button>
   </tui-data-list>
 
+</ng-template>
+
+<ng-template #template let-observer>
+  <h4>Are you sure you want to delete this todo?</h4>
+  <div class="buttons">
+    <button
+      tuiButton
+      type="button"
+      size="m"
+      appearance="custom"
+      class="delete"
+      (click)="onClickDelete(observer)"
+    >Delete</button>
+    <button
+      tuiButton
+      type="button"
+      size="m"
+      (click)="observer.complete()"
+    >Cancel</button>
+  </div>
 </ng-template>
