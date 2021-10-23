@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import {StorageService} from "@ng-web-apis/storage";
 import {ToDo} from "./ToDo";
+import {TuiDay} from "@taiga-ui/cdk";
 
 @Injectable({
   providedIn: 'root'
@@ -9,14 +10,17 @@ export class RepositoryService {
 
   constructor(private readonly storageService: StorageService) { }
 
-  loadToDos() {
+  loadToDos(): ToDo[] | undefined {
     let todos = this.storageService.getItem("todos");
     if (!todos) return;
-    return JSON.parse(todos);
+    let items = JSON.parse(todos)
+    // @ts-ignore
+    return items.map((i: ToDo) => new ToDo(i.title, i.description, i.priority, TuiDay.jsonParse(i.dueDate)));
   }
 
   saveTodos(todos: ToDo[]) {
     let todoArray = JSON.stringify(todos);
+    console.log(todoArray)
     this.storageService.setItem("todos", todoArray);
   }
 }

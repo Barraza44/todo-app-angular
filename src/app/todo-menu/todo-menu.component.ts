@@ -1,7 +1,9 @@
-import { Component, OnInit, Input } from '@angular/core';
+import {Component, OnInit, Input, Injector, Inject} from '@angular/core';
 import {TuiDialogContext, TuiDialogService} from "@taiga-ui/core";
-import {PolymorpheusContent} from "@tinkoff/ng-polymorpheus";
+import {PolymorpheusComponent, PolymorpheusContent} from "@tinkoff/ng-polymorpheus";
 import {ToDo} from "../ToDo";
+import {NewTodoComponent} from "../new-todo/new-todo/new-todo.component";
+import {Observable} from "rxjs";
 
 @Component({
   selector: 'app-todo-menu',
@@ -13,20 +15,45 @@ export class TodoMenuComponent implements OnInit {
 
   @Input() todo!: ToDo;
   @Input() deleteTodo!: (todo: ToDo) => void;
+  @Input() editTodo!: (todo: ToDo) => void;
 
   constructor(
     private readonly tuiDialogService: TuiDialogService,
+    @Inject(Injector) private readonly injector: Injector
+    ) { }
 
-  ) { }
+
+  // @ts-ignore
+  private editDialog: Observable<ToDo>;
 
   ngOnInit(): void {
+    console.log(this.todo)
+    this.editDialog = this.tuiDialogService.open<ToDo>(
+      new PolymorpheusComponent(NewTodoComponent, this.injector),
+      {
+        data: this.todo,
+        dismissible: true,
+        label: "Create a Todo"
+      }
+    );
   }
 
+  //Opens delete dialog, if the todoItem is deleted runs onClickDelete
   showDeleteDialog(content: PolymorpheusContent<TuiDialogContext>) {
     this.tuiDialogService.open(content).subscribe();
   }
 
-  onClickEdit() {}
+  showEditDialog() {
+    this.editDialog.subscribe({
+      next: data => {
+        console.log(data)
+        this.editTodo(data);
+      },
+      complete: () => {
+        console.info("Closed")
+      }
+    })
+  }
 
   onClickDelete(observer: any) {
     this.deleteTodo(this.todo)

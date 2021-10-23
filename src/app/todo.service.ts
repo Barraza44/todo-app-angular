@@ -27,10 +27,18 @@ export class TodoService {
 
   addTodo(todo: ToDo) {
     if(todo === undefined) return;
+    console.log(todo)
     this.todos.push(todo);
     todo.id = this.todos.length === 0 ? 1 : this.todos.length;
     this.notifyService.onTodoCreate(todo.id);
     this.saveToDos();
+  }
+
+  editTodo(todo: ToDo): ToDo[] {
+    let index = this.todos.findIndex(t => t.id === todo.id);
+    this.todos.splice(index, 1, todo);
+    this.saveToDos();
+    return this.todos;
   }
 
   deleteTodo(ToDo: ToDo) {
@@ -48,6 +56,7 @@ export class TodoService {
 
   //Save ToDos to local storage
   saveToDos() {
+    console.log(this.todos)
     this.repositoryService.saveTodos(this.todos);
   }
 }
