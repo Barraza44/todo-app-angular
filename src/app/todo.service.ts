@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import { NotifyService } from "./notify.service";
 import {ToDo} from "./ToDo";
-import {StorageService} from "@ng-web-apis/storage";
+import {RepositoryService} from "./repository.service";
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +10,7 @@ export class TodoService {
 
   constructor(
     private notifyService: NotifyService,
-    private storageService: StorageService
+    private repositoryService: RepositoryService
   ) {}
 
   todos: ToDo[] = this.loadToDos() ?? [];
@@ -43,14 +43,11 @@ export class TodoService {
 
   //Loads ToDos from local storage
   loadToDos() {
-    let todos = this.storageService.getItem("todos");
-    if (!todos) return;
-    return JSON.parse(todos)
+    return this.repositoryService.loadToDos();
   }
 
   //Save ToDos to local storage
   saveToDos() {
-    let todos = JSON.stringify(this.todos);
-    this.storageService.setItem("todos", todos);
+    this.repositoryService.saveTodos(this.todos);
   }
 }
