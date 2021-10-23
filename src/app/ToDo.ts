@@ -15,3 +15,12 @@ export class ToDo {
     this.dueDate = dueDate;
   }
 }
+
+export interface TodoString {
+  id: number
+  title: string;
+  description: string;
+  priority: string;
+  dueDate: string;
+}
+
