@@ -1,13 +1,18 @@
-import {TuiDay} from "@taiga-ui/cdk";
+import { TuiDay } from '@taiga-ui/cdk';
 
 export class ToDo {
-  id: number
+  id: number;
   title: string;
   description: string;
   priority: string;
   dueDate: TuiDay;
 
-  constructor(title: string, description: string, priority: string, dueDate: TuiDay) {
+  constructor(
+    title: string,
+    description: string,
+    priority: string,
+    dueDate: TuiDay
+  ) {
     this.id = 0;
     this.title = title;
     this.description = description;
@@ -17,7 +22,7 @@ export class ToDo {
 }
 
 export interface TodoString {
-  id: number
+  id: number;
   title: string;
   description: string;
   priority: string;

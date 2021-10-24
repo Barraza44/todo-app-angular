@@ -1,4 +1,4 @@
-<tui-hosted-dropdown #dropdown [content]="content" [(open)]="isDropdownOpen" >
+<tui-hosted-dropdown #dropdown [content]="content" [(open)]="isDropdownOpen">
   <button
     tuiIconButton
     type="button"
@@ -16,11 +16,13 @@
     <button
       tuiOption
       (click)="showEditDialog()"
-    >Edit</button>
+    >Edit
+    </button>
     <button
       tuiOption
       (click)="showDeleteDialog(template)"
-    >Delete</button>
+    >Delete
+    </button>
   </tui-data-list>
 
 </ng-template>
@@ -35,12 +37,14 @@
       appearance="custom"
       class="delete"
       (click)="onClickDelete(observer)"
-    >Delete</button>
+    >Delete
+    </button>
     <button
       tuiButton
       type="button"
       size="m"
       (click)="observer.complete()"
-    >Cancel</button>
+    >Cancel
+    </button>
   </div>
 </ng-template>

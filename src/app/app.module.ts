@@ -1,24 +1,27 @@
-import { NgDompurifySanitizer } from "@tinkoff/ng-dompurify";
-import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { NgDompurifySanitizer } from '@tinkoff/ng-dompurify';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {
-  TuiRootModule,
-  TuiDialogModule,
-  TuiNotificationsModule,
   TUI_SANITIZER,
+  TuiButtonModule,
+  TuiDataListModule,
+  TuiDialogModule,
   TuiGroupModule,
-  TuiButtonModule, TuiTooltipModule, TuiHintModule, TuiHostedDropdownModule, TuiDataListModule
-} from "@taiga-ui/core";
+  TuiHintModule,
+  TuiHostedDropdownModule,
+  TuiNotificationsModule,
+  TuiRootModule,
+  TuiTooltipModule,
+} from '@taiga-ui/core';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
 import { AppViewComponent } from './app-view/app-view.component';
-import {TuiIslandModule, TuiTagModule} from "@taiga-ui/kit";
+import { TuiIslandModule, TuiTagModule } from '@taiga-ui/kit';
 import { NavigationComponent } from './navigation/navigation.component';
-import {NewTodoModule} from "./new-todo/new-todo.module";
+import { NewTodoModule } from './new-todo/new-todo.module';
 import { TodoMenuComponent } from './todo-menu/todo-menu.component';
-import {TuiActiveZoneModule} from "@taiga-ui/cdk";
-
+import { TuiActiveZoneModule } from '@taiga-ui/cdk';
 
 @NgModule({
   declarations: [
@@ -42,9 +45,9 @@ import {TuiActiveZoneModule} from "@taiga-ui/cdk";
     NewTodoModule,
     TuiHostedDropdownModule,
     TuiDataListModule,
-    TuiActiveZoneModule
+    TuiActiveZoneModule,
   ],
-  providers: [{provide: TUI_SANITIZER, useClass: NgDompurifySanitizer}],
-  bootstrap: [AppComponent]
+  providers: [{ provide: TUI_SANITIZER, useClass: NgDompurifySanitizer }],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

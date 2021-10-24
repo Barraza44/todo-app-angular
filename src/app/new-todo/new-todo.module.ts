@@ -6,17 +6,18 @@ import {
   TuiInputDateModule,
   TuiInputModule,
   TuiSelectModule,
-  TuiTextAreaModule, TuiUnfinishedValidatorModule
-} from "@taiga-ui/kit";
-import {TuiButtonModule, TuiDataListModule, TuiTextfieldControllerModule} from "@taiga-ui/core";
-import {FormsModule, ReactiveFormsModule} from "@angular/forms";
-
-
+  TuiTextAreaModule,
+  TuiUnfinishedValidatorModule,
+} from '@taiga-ui/kit';
+import {
+  TuiButtonModule,
+  TuiDataListModule,
+  TuiTextfieldControllerModule,
+} from '@taiga-ui/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
-  declarations: [
-    NewTodoComponent
-  ],
+  declarations: [NewTodoComponent],
   imports: [
     CommonModule,
     FormsModule,
@@ -31,8 +32,6 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
     TuiUnfinishedValidatorModule,
     ReactiveFormsModule,
   ],
-  exports : [
-    NewTodoComponent
-  ]
+  exports: [NewTodoComponent],
 })
-export class NewTodoModule { }
+export class NewTodoModule {}

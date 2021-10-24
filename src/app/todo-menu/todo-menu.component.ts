@@ -1,14 +1,17 @@
-import {Component, OnInit, Input, Injector, Inject} from '@angular/core';
-import {TuiDialogContext, TuiDialogService} from "@taiga-ui/core";
-import {PolymorpheusComponent, PolymorpheusContent} from "@tinkoff/ng-polymorpheus";
-import {ToDo} from "../ToDo";
-import {NewTodoComponent} from "../new-todo/new-todo/new-todo.component";
-import {Observable} from "rxjs";
+import { Component, Inject, Injector, Input, OnInit } from '@angular/core';
+import { TuiDialogContext, TuiDialogService } from '@taiga-ui/core';
+import {
+  PolymorpheusComponent,
+  PolymorpheusContent,
+} from '@tinkoff/ng-polymorpheus';
+import { ToDo } from '../ToDo';
+import { NewTodoComponent } from '../new-todo/new-todo/new-todo.component';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-todo-menu',
   templateUrl: './todo-menu.component.html',
-  styleUrls: ['./todo-menu.component.css']
+  styleUrls: ['./todo-menu.component.css'],
 })
 export class TodoMenuComponent implements OnInit {
   isDropdownOpen = false;
@@ -20,20 +23,18 @@ export class TodoMenuComponent implements OnInit {
   constructor(
     private readonly tuiDialogService: TuiDialogService,
     @Inject(Injector) private readonly injector: Injector
-    ) { }
-
+  ) {}
 
   // @ts-ignore
   private editDialog: Observable<ToDo>;
 
   ngOnInit(): void {
-
     this.editDialog = this.tuiDialogService.open<ToDo>(
       new PolymorpheusComponent(NewTodoComponent, this.injector),
       {
         data: this.todo,
         dismissible: true,
-        label: "Edit Todo"
+        label: 'Edit Todo',
       }
     );
   }
@@ -45,18 +46,17 @@ export class TodoMenuComponent implements OnInit {
 
   showEditDialog() {
     this.editDialog.subscribe({
-      next: data => {
+      next: (data) => {
         this.editTodo(data);
       },
       complete: () => {
-        console.info("Closed")
-      }
-    })
+        console.info('Closed');
+      },
+    });
   }
 
   onClickDelete(observer: any) {
-    this.deleteTodo(this.todo)
+    this.deleteTodo(this.todo);
     observer.complete();
   }
-
 }
