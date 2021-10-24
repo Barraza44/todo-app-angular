@@ -31,9 +31,9 @@ export class NewTodoComponent implements OnInit {
   todoControl = new FormGroup(
     {
       titleControl: new FormControl(this.currentTodo?.title ?? "Title!"),
-      descriptionControl: new FormControl(this.currentTodo?.title ?? "Type your description"),
+      descriptionControl: new FormControl(this.currentTodo?.description ?? "Type your description"),
       priorityControl: new FormControl(this.currentTodo?.priority ?? ""),
-      dateControl: new FormControl(this.currentTodo?.dueDate ?? new TuiDay(1996, 6, 24))
+      dateControl: new FormControl(this.currentTodo?.dueDate ?? new TuiDay(2020, 6, 24))
     }
   )
 

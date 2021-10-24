@@ -33,7 +33,7 @@ export class TodoMenuComponent implements OnInit {
       {
         data: this.todo,
         dismissible: true,
-        label: "Create a Todo"
+        label: "Edit Todo"
       }
     );
   }
