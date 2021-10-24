@@ -45,7 +45,6 @@ export class NewTodoComponent implements OnInit {
 
     const isEmpty = todoTitle === null || todoDescription === null || todoPriority === null || todoDueDate === null;
     if (isEmpty) return;
-    console.log(todoDueDate)
     return new ToDo(todoTitle, todoDescription, todoPriority, todoDueDate)
   }
 

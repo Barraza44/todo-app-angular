@@ -27,7 +27,7 @@ export class TodoMenuComponent implements OnInit {
   private editDialog: Observable<ToDo>;
 
   ngOnInit(): void {
-    console.log(this.todo)
+
     this.editDialog = this.tuiDialogService.open<ToDo>(
       new PolymorpheusComponent(NewTodoComponent, this.injector),
       {
@@ -46,7 +46,6 @@ export class TodoMenuComponent implements OnInit {
   showEditDialog() {
     this.editDialog.subscribe({
       next: data => {
-        console.log(data)
         this.editTodo(data);
       },
       complete: () => {

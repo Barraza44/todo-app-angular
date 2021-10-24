@@ -19,7 +19,6 @@ export class RepositoryService {
 
   saveTodos(todos: ToDo[]) {
     let todoArray = JSON.stringify(todos);
-    console.log(todoArray)
     this.storageService.setItem("todos", todoArray);
   }
 }

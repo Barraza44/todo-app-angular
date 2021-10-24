@@ -27,7 +27,6 @@ export class TodoService {
 
   addTodo(todo: ToDo) {
     if(todo === undefined) return;
-    console.log(todo)
     this.todos.push(todo);
     todo.id = this.todos.length === 0 ? 1 : this.todos.length;
     this.notifyService.onTodoCreate(todo.id);
@@ -56,7 +55,6 @@ export class TodoService {
 
   //Save ToDos to local storage
   saveToDos() {
-    console.log(this.todos)
     this.repositoryService.saveTodos(this.todos);
   }
 }
