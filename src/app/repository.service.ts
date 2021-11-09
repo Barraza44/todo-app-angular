@@ -9,8 +9,8 @@ import { TuiDay } from '@taiga-ui/cdk';
 export class RepositoryService {
   constructor(private readonly storageService: StorageService) {}
 
-  loadToDos(): ToDo[] | undefined {
-    let todos = this.storageService.getItem('todos');
+  loadToDos(projectName: string): ToDo[] | undefined {
+    let todos = this.storageService.getItem(projectName);
     if (!todos) return;
     let items = JSON.parse(todos);
     return items.map(
@@ -24,8 +24,8 @@ export class RepositoryService {
     );
   }
 
-  saveTodos(todos: ToDo[]) {
+  saveTodos(todos: ToDo[], projectName: string) {
     let todoArray = JSON.stringify(todos);
-    this.storageService.setItem('todos', todoArray);
+    this.storageService.setItem(projectName, todoArray);
   }
 }

@@ -28,4 +28,9 @@ export class ProjectService {
     // @ts-ignore
     this.currentProject.ToDos = [...Todo];
   }
+
+  public saveTodos() {
+    // @ts-ignore
+    this.repositoryService.saveTodos(this.currentProject?.ToDos, this.currentProject?.name)
+  }
 }
