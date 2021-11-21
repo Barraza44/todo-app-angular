@@ -22,6 +22,7 @@ import { NavigationComponent } from './navigation/navigation.component';
 import { NewTodoModule } from './new-todo/new-todo.module';
 import { TodoMenuComponent } from './todo-menu/todo-menu.component';
 import { TuiActiveZoneModule } from '@taiga-ui/cdk';
+import { MenuComponent } from './menu/menu.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { TuiActiveZoneModule } from '@taiga-ui/cdk';
     AppViewComponent,
     NavigationComponent,
     TodoMenuComponent,
+    MenuComponent,
   ],
   imports: [
     BrowserModule,
