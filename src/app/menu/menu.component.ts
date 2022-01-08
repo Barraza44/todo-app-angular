@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {ProjectService} from "../project.service";
 
 @Component({
   selector: 'app-menu',
@@ -7,7 +8,38 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MenuComponent implements OnInit {
 
-  constructor() { }
+  constructor(private projectService: ProjectService) { }
+
+  projectList = this.projectService.getProjectList();
+
+  readonly groups = [
+    {
+      label: `Projects`,
+      items:
+        this.projectList.map(p =>
+        {
+          return {label: `${p.name}`, onClick: () => this.projectService.setCurrentProject(p)}
+        }),
+    },
+    {
+      label: '',
+      items: [
+        {
+          label: `Add a project`,
+          onClick: () => "Hello World",
+        },
+      ],
+    },
+    {
+      label: "Settings",
+      items: [
+        {
+          label: "Change theme",
+          onClick: () => ""
+        }
+      ]
+    }
+  ];
 
   ngOnInit(): void {
   }

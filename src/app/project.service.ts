@@ -54,4 +54,8 @@ export class ProjectService {
   public initDefaultProject() {
     return this.projectList.find((p) => p.name === 'Default');
   }
+
+  public getProjectList() {
+    return this.projectList;
+  }
 }
