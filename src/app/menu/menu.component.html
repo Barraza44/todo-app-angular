@@ -1,10 +1,10 @@
-<tui-hosted-dropdown [content]="content">
+<tui-hosted-dropdown>
   <button tuiIconButton icon="tuiIconMenuLarge" appearance="flat"></button>
 </tui-hosted-dropdown>
 <ng-template #content>
   <tui-data-list role="menu">
     <tui-opt-group *ngFor="let group of groups" [label]="group.label">
-      <button *ngFor="let items of group.items" tuiOption>
+      <button *ngFor="let items of group.items" tuiOption (click)="items.onClick()">
         {{items.label}}
       </button>
     </tui-opt-group>

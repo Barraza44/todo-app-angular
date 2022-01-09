@@ -5,6 +5,8 @@ import {Project} from "../Project";
 import {PolymorpheusComponent} from "@tinkoff/ng-polymorpheus";
 import {NewProjectComponent} from "../new-project/new-project/new-project.component";
 
+//TODO: to actually make this work
+
 @Component({
   selector: 'app-menu',
   templateUrl: './menu.component.html',
@@ -62,6 +64,7 @@ export class MenuComponent implements OnInit {
   showCreateProjectDialog() {
     this.dialog.subscribe({
       next: (data) => {
+        if (!data) return;
         this.projectService.setCurrentProject(this.projectService.addProject(data));
       },
       complete: () => {

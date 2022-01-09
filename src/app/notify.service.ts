@@ -26,4 +26,22 @@ export class NotifyService {
       })
       .subscribe();
   }
+
+  onProjectCreate(name: string) {
+    this.tuiNotificationsService.show(`Project ${name} successfully created`, {
+      label: 'Project created',
+      status: TuiNotification.Success,
+      autoClose: true,
+    })
+      .subscribe();
+  }
+
+  onProjectChange(name: string) {
+    this.tuiNotificationsService.show(`Switched to project: ${name}`, {
+      label: 'Project switched',
+      status: TuiNotification.Info,
+      autoClose: true,
+    })
+      .subscribe();
+  }
 }

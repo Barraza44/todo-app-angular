@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Project } from './Project';
 import { ToDo } from './ToDo';
 import { RepositoryService } from './repository.service';
+import {NotifyService} from "./notify.service";
 
 @Injectable({
   providedIn: 'root',
@@ -10,17 +11,18 @@ export class ProjectService {
   public projectList: Project[] = this.loadProjectList() ?? this.initProjectList();
   public currentProject: Project = this.initDefaultProject() ?? this.addProject(new Project("Default", []));
 
-  constructor(private repositoryService: RepositoryService) {}
+  constructor(private repositoryService: RepositoryService, private notificationService: NotifyService) {}
 
   public addProject(project: Project) {
-    project.ToDos = this.repositoryService.loadToDos(project.name);
     this.projectList.push(project);
     this.repositoryService.saveProjectList(this.projectList);
+    this.notificationService.onProjectCreate(project.name);
     return project;
   }
 
   public setCurrentProject(project: Project) {
     this.currentProject = project;
+    this.notificationService.onProjectChange(project.name);
   }
 
   public getProjectTodos() {
