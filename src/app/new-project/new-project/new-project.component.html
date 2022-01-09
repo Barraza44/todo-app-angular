@@ -1,1 +1,26 @@
-<p>new-project works!</p>
+<form [formGroup]="projectControl">
+  <div class="tui-form__row">
+    <tui-input formControlName="titleControl" tuiTextfieldSize="m">Title</tui-input>
+  </div>
+  <div class="tui-form__buttons">
+    <button
+      tuiButton
+      type="button"
+      class="tui-form__button"
+      size="m"
+      (click)="submit()"
+    >
+      Submit
+    </button>
+    <button
+      tuiButton
+      appearance="flat"
+      class="tui-form__button"
+      size="m"
+      type="button"
+      (click)="cancel()"
+    >
+      Cancel
+    </button>
+  </div>
+</form>

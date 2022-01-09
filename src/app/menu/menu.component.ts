@@ -1,5 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import {ProjectService} from "../project.service";
+import {Component, Inject, Injector, OnInit} from '@angular/core';
+import { ProjectService } from "../project.service";
+import { TuiDialogService } from "@taiga-ui/core";
+import {Project} from "../Project";
+import {PolymorpheusComponent} from "@tinkoff/ng-polymorpheus";
+import {NewProjectComponent} from "../new-project/new-project/new-project.component";
 
 @Component({
   selector: 'app-menu',
@@ -8,9 +12,20 @@ import {ProjectService} from "../project.service";
 })
 export class MenuComponent implements OnInit {
 
-  constructor(private projectService: ProjectService) { }
+  constructor(
+    @Inject(ProjectService) private readonly projectService: ProjectService,
+    @Inject(TuiDialogService) private readonly dialogService: TuiDialogService,
+    @Inject(Injector) private readonly injector: Injector
+  ) { }
 
   projectList = this.projectService.getProjectList();
+  private readonly dialog = this.dialogService.open<Project>(
+    new PolymorpheusComponent(NewProjectComponent, this.injector),
+    {
+      dismissible: true,
+      label: "Create a project!",
+    }
+  )
 
   readonly groups = [
     {
@@ -26,7 +41,7 @@ export class MenuComponent implements OnInit {
       items: [
         {
           label: `Add a project`,
-          onClick: () => "Hello World",
+          onClick: () => this.showCreateProjectDialog(),
         },
       ],
     },
@@ -42,6 +57,17 @@ export class MenuComponent implements OnInit {
   ];
 
   ngOnInit(): void {
+  }
+
+  showCreateProjectDialog() {
+    this.dialog.subscribe({
+      next: (data) => {
+        this.projectService.setCurrentProject(this.projectService.addProject(data));
+      },
+      complete: () => {
+        console.info("Closed!")
+      }
+    })
   }
 
 }
