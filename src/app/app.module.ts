@@ -23,6 +23,7 @@ import { NewTodoModule } from './new-todo/new-todo.module';
 import { TodoMenuComponent } from './todo-menu/todo-menu.component';
 import { TuiActiveZoneModule } from '@taiga-ui/cdk';
 import { MenuComponent } from './menu/menu.component';
+import {NewProjectModule} from "./new-project/new-project.module";
 
 @NgModule({
   declarations: [
@@ -45,6 +46,7 @@ import { MenuComponent } from './menu/menu.component';
     TuiHintModule,
     TuiTagModule,
     NewTodoModule,
+    NewProjectModule,
     TuiHostedDropdownModule,
     TuiDataListModule,
     TuiActiveZoneModule,
